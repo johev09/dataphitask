@@ -12,4 +12,4 @@ npm install
 // to start server
 node server.js
 ```
-host the folder and go to http://localhost/dataphitask
+host the folder and open http://localhost/dataphitask
