@@ -12,4 +12,7 @@ npm install
 // to start server
 node server.js
 ```
-host the folder and open http://localhost/dataphitask
+
+import the mysql database file **patient.sql**
+
+host the folder and open **http://localhost/dataphitask**
