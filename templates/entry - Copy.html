@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<style>
+    nav {
+        background-color: dodgerblue;
+    }
+</style>
+
+<body ng-app="pat-ent-app" ng-controller="pat-ent-ctrl">
+    <div class="container">
+        <div class="container">
+            <div class="row">
+                <h4></h4>
+            </div>
+            <div class="row">
+                <form class="col s12" ng-submit="submitForm()" name="addform">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <i class="fa fa-user prefix"></i>
+                            <input ng-model="fname" name="fname" ng-pattern="/^[a-zA-Z ]*$/" id="first_name" type="text" class="validate" required>
+                            <label for="first_name">First Name</label>
+                            <span style="color:red" ng-show="addform.fname.$touched && addform.fname.$invalid">
+                            <span ng-show="addform.fname.$error.required">First Name is required</span>
+                            <span ng-show="addform.fname.$error.pattern">First Name should contain only alphabets</span>
+                            </span>
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="fa fa-user prefix"></i>
+                            <input ng-model="lname" name="lname" ng-pattern="/^[a-zA-Z ]*$/" id="last_name" type="text" class="validate" required>
+                            <label for="last_name">Last Name</label>
+                            <span style="color:red" ng-show="addform.lname.$touched && addform.lname.$invalid">
+                            <span ng-show="addform.lname.$error.required">Last Name is required</span>
+                            <span ng-show="addform.lname.$error.pattern">Last Name should contain only alphabets</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <i class="fa fa-clock-o prefix"></i>
+                            <input id="age-input" ng-model="age" type="text" class="validate" required disabled>
+                            <label for="age-input">Age (years)</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="fa fa-calendar-check-o prefix"></i>
+                            <input id="dob" type="date" class="datepicker" required>
+                            <label for="dob">D.O.B</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <i class="fa fa-male prefix"></i>
+                            <select id="gender" ng-model="gender" required>
+                                <option value="" disabled selected>Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="phone" name="phone" ng-model="phone" ng-minlength="10" ng-maxlength="10" ng-pattern="/^[0-9]*$/" type="text" class="validate" required>
+                            <label for="phone">Phone</label>
+                            <span style="color:red" ng-show="addform.phone.$touched && addform.phone.$invalid">
+                            <span ng-show="addform.phone.$error.required">Phone number is required<br></span>
+                            <span ng-show="addform.phone.$error.pattern">Phone number should be only number<br></span>
+                            <span ng-show="addform.phone.$error.minlength || addform.phone.$error.maxlength">Phone number should be 10 digits<br></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea id="textarea1" class="materialize-textarea"></textarea>
+                            <label for="textarea1">Remarks</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <button type="submit" class="waves-effect waves-light btn-large" value="Submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('select').material_select();
+        });
+
+        var app = angular.module('pat-ent-app', []);
+        app.controller('pat-ent-ctrl', function ($scope, $http) {
+            $scope.submitForm = function () {
+
+            }
+
+            $scope.age = 0
+            $('.datepicker').pickadate({
+                selectMonths: true, // Creates a dropdown to control month
+                selectYears: 100, // Creates a dropdown of 15 years to control year
+                onSet: function (e) {
+                    if (!("select" in e))
+                        return
+
+                    var ageDifMs = Date.now() - new Date(e.select).getTime(); // parse string to date
+                    var ageDate = new Date(ageDifMs); // miliseconds from epoch
+                    $scope.age = Math.abs(ageDate.getUTCFullYear() - 1970);
+                    $scope.$apply()
+                }
+            });
+
+            //            $scope.$watch("dob",function(dob) {
+            //                console.log(dob)
+            //                
+            //                var ageDifMs = Date.now() - new Date(dob).getTime(); // parse string to date
+            //                var ageDate = new Date(ageDifMs); // miliseconds from epoch
+            //                var age = Math.abs(ageDate.getUTCFullYear() - 1970);
+            //                $scope.age = age
+            //            });
+        });
+    </script>
+</body>
+
+</html>

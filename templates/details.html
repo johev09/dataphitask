@@ -1,0 +1,34 @@
+<div class="container" ng-init="init()">
+    <div class="row">
+        <div class="input-field col s12">
+            <i class="fa fa-search prefix"></i>
+            <input ng-model="searchString" type="text" id="search" placeholder="Search">
+        </div>
+    </div>
+    <div class="row">
+        <table class="bordered highlight">
+            <thead>
+                <tr>
+                    <th data-field="fname">FirstName</th>
+                    <th data-field="lname">Last Name</th>
+                    <th data-field="dob">Age</th>
+                    <th data-field="dob">DOB</th>
+                    <th data-field="gender">Gender</th>
+                    <th data-field="phone">Phone</th>
+                    <th data-field="remarks">Remarks</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="x in data | searchFor:searchString">
+                    <td>{{ x.fname }}</td>
+                    <td>{{ x.lname }}</td>
+                    <td>{{ x.dob | agefilter}}</td>
+                    <td>{{ x.dob | datefilter}}</td>
+                    <td>{{ x.gender }}</td>
+                    <td>{{ x.phone }}</td>
+                    <td>{{ x.remarks }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

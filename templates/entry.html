@@ -1,0 +1,77 @@
+<div class="container" ng-init="init()">
+    <div class="row">
+        <h4></h4>
+    </div>
+    <div class="row">
+        <form class="col s12" ng-submit="submitForm()" name="addform" validate>
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="fa fa-user prefix"></i>
+                    <input ng-model="fname" name="fname" ng-pattern="/^[a-zA-Z ]*$/" id="first_name" type="text" class="validate" required>
+                    <label for="first_name">First Name</label>
+                    <span style="color:red" ng-show="addform.fname.$touched && addform.fname.$invalid">
+                            <span ng-show="addform.fname.$error.required">First Name is required</span>
+                    <span ng-show="addform.fname.$error.pattern">First Name should contain only alphabets</span>
+                    </span>
+                </div>
+                <div class="input-field col s6">
+                    <i class="fa fa-user prefix"></i>
+                    <input ng-model="lname" name="lname" ng-pattern="/^[a-zA-Z ]*$/" id="last_name" type="text" class="validate" required>
+                    <label for="last_name">Last Name</label>
+                    <span style="color:red" ng-show="addform.lname.$touched && addform.lname.$invalid">
+                        <span ng-show="addform.lname.$error.required">Last Name is required</span>
+                    <span ng-show="addform.lname.$error.pattern">Last Name should contain only alphabets</span>
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="fa fa-clock-o prefix"></i>
+                    <input id="age-input" ng-model="age" type="text" class="validate" disabled required>
+                    <label for="age-input">Age (years)</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="fa fa-calendar-check-o prefix"></i>
+                    <input id="dob" type="date" class="datepicker" required>
+                    <label for="dob">D.O.B</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="fa fa-male prefix"></i>
+                    <select id="gender" ng-model="gender">
+                        <option value="" disabled selected>Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+                <div class="input-field col s6">
+                    <i class="fa fa-mobile prefix"></i>
+                    <input id="phone" name="phone" ng-model="phone" ng-minlength="10" ng-maxlength="10" ng-pattern="/^[0-9]*$/" type="text" class="validate" required>
+                    <label for="phone">Phone</label>
+                    <span style="color:red" ng-show="addform.phone.$touched && addform.phone.$invalid">
+                            <span ng-show="addform.phone.$error.required">Phone number is required<br></span>
+                    <span ng-show="addform.phone.$error.pattern">Phone number should be only number<br></span>
+                    <span ng-show="addform.phone.$error.minlength || addform.phone.$error.maxlength">Phone number should be 10 digits<br></span>
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fa fa-align-left prefix"></i>
+                    <textarea ng-model="remarks" id="textarea1" class="materialize-textarea" required></textarea>
+                    <label for="textarea1">Remarks</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s6">
+                    <button type="submit" class="waves-effect waves-light btn-large" value="Submit">Submit</button>
+                </div>
+                <div class="col s6">
+                    <span style="color:green">{{ message }}</span>
+                    <span style="color:crimson">{{ error }}</span>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
