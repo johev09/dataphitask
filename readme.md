@@ -1,6 +1,7 @@
 # DataPhiLabs Task
 
 **Frontend:** AngularJS and Materizecss
+
 **Backend:** Nodejs
 
 ## Steps to run:
