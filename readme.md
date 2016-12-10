@@ -7,6 +7,7 @@
 ## Steps to run:
 
 import the mysql database file **patient.sql**
+
 host the mysql server on **http://localhost:3306**
 
 ```
