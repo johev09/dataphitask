@@ -5,6 +5,9 @@
 
 ## Steps to run:
 
+import the mysql database file **patient.sql**
+host the mysql server on **http://localhost:3306**
+
 ```
 // to install dependencies
 npm install
@@ -13,6 +16,4 @@ npm install
 node server.js
 ```
 
-import the mysql database file **patient.sql**
-
-host the folder and open **http://localhost/dataphitask**
+Now open **http://localhost:3000**

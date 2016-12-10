@@ -1,6 +1,9 @@
 var express = require('express');
+
 var app = express();
 var mysql = require('mysql')
+
+app.use('/', express.static(__dirname));
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json()); // support json encoded bodies
@@ -39,6 +42,11 @@ app.listen(PORT, function () {
     console.log('Node server running @ http://localhost:' + PORT)
 });
 
+app.get("/", function (req, res) {
+    res.sendFile('index.html', {
+        root: __dirname
+    })
+});
 app.post("/entry", function (req, res) {
     var fname = req.body.fname,
         lname = req.body.lname,
