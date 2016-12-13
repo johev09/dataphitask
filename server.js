@@ -23,7 +23,7 @@ app.use(function (req, res, next) {
     }
 });
 
-var host = 'localhost',
+var host = '127.0.0.1',
     user = 'root',
     password = '',
     database = 'dataphitask';
@@ -34,7 +34,6 @@ var connection = mysql.createConnection({
     password: password,
     database: database
 })
-
 connection.connect();
 
 var PORT = 3000;

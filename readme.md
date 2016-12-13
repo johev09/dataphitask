@@ -6,6 +6,7 @@
 
 ## Steps to run:
 
+create a database name: dataphitask and,
 import the mysql database file **patient.sql**
 
 host the mysql server on **http://localhost:3306**
